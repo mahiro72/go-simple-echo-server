@@ -50,7 +50,7 @@ go-lint: ## src配下のgoのコードを整形する
 
 .PHONY: go-test
 go-test: ## goのテストを実行する
-	cd src/ && go test -v ./...
+	cd $(GO_SRC_DIR) && go test -v ./...
 
 .PHONY: log
 log: ## docker compose環境のログを確認する
