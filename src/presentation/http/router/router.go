@@ -29,6 +29,14 @@ func New(port int) IRouter {
 func (r *Router) setMiddleware() {
 	r.mux.Use(middleware.Logger)
 	r.mux.Use(middleware.Recoverer)
+	r.mux.Use(writeContentTypeJson)
+}
+
+func writeContentTypeJson(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		next.ServeHTTP(w, r)
+	})
 }
 
 func (r *Router) Serve() error {
