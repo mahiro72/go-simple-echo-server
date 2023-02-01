@@ -13,8 +13,9 @@ func NewHealth() *Health {
 }
 
 func (h *Health) Ping(w http.ResponseWriter, r *http.Request) {
-	res := map[string]interface{}{
-		"message": "hello",
-	}
-	response.WriteJson(w, res, http.StatusOK)
+	response.WriteJson(w, ping{Message: "hello"}, http.StatusOK)
+}
+
+type ping struct {
+	Message string `json:"message"`
 }
