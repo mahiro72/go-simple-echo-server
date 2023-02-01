@@ -5,8 +5,8 @@ import (
 	"net/http"
 )
 
-func WriteJson(w http.ResponseWriter, v any, status int) {
-	if err := json.NewEncoder(w).Encode(v); err != nil {
+func WriteJson(w http.ResponseWriter, res any, status int) {
+	if err := json.NewEncoder(w).Encode(res); err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte(err.Error()))
 	}
