@@ -40,10 +40,8 @@ func writeContentTypeJson(next http.Handler) http.Handler {
 }
 
 func (r *Router) Serve() error {
-	// middlewareの設定
 	r.setMiddleware()
 
-	// health routerの初期化
 	r.initHealth()
 
 	return http.ListenAndServe(
