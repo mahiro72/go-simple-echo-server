@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  server:
+    build:
+      context: ../src
+      dockerfile: Dockerfile
+    container_name: 'echo-server'
+    ports:
+      - 3000:3000
+    volumes:
+      - ../src:/go/src/github.com/mahiro72/go-simple-echo-server/src
+    restart: always
+    tty: true
